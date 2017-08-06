@@ -1,5 +1,5 @@
 def getApp():
-    with open('/Users/Prathamesh/Desktop/ws1/github/Ruby/Fundamentals/test.txt') as f:
+    with open('test.txt') as f:
         for line in f.readlines():
             values = line.split()
             if len(values) >= 25:
@@ -17,7 +17,7 @@ def getApp():
 
 def getFailures():
     print "Failures: "
-    with open('/Users/Prathamesh/Desktop/ws1/github/Ruby/Fundamentals/test.txt') as f:
+    with open('test.txt') as f:
         for line in f.readlines():
             values = line.split()
             if 'FAILURE' in values[2]:
