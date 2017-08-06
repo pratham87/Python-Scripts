@@ -11,29 +11,25 @@ import csv
 
 #***************** Read and print every row in csv file *******************
 
-csv_file = open('test.csv')
-for row in csv_file:
-    print(row)
-csv_file.close()
+with open('test.csv') as csv_file:
+    for row in csv_file:
+        print(row)
 
 print()
 
 #*********************** Using reader function ****************************
 
-template = """{} is {}""" #{} is the place holder
+template = """{} is {}""" # {} is the place holder
 
 # Using reader function
-csv_file = open('test.csv')
+with open('test.csv') as csv_file:
+  reader = csv.reader(csv_file, delimiter=',')
+  next(reader) # Extract the first line in the csv file
 
-reader = csv.reader(csv_file, delimiter=',')
-next(reader) # Extract the first line in the csv file
-
-for row in reader:
-    id, name, email, weight = row
-    if int(weight) > 100:
-        msg = template.format(name,'Overweight')
-    else:
-        msg = template.format(name,'Healthy')
-    print(msg)    
-
-csv_file.close()
+  for row in reader:
+      id, name, email, weight = row
+      if int(weight) > 100:
+          msg = template.format(name,'Overweight')
+      else:
+          msg = template.format(name,'Healthy')
+      print(msg)    
